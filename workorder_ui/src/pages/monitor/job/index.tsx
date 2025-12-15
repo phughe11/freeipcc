@@ -8,7 +8,7 @@ import type { FormInstance } from 'antd';
 import { Dropdown, Menu } from 'antd';
 import { Button, message, Modal } from 'antd';
 import React, { useState, useRef, useEffect } from 'react';
-import { useIntl, FormattedMessage, history, useAccess } from 'umi';
+import { useIntl, FormattedMessage, useAccess, history } from '@umijs/max';
 import { FooterToolbar } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';

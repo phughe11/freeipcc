@@ -10,7 +10,7 @@ import {
   ProFormTimePicker
 } from '@ant-design/pro-form';
 import { Form, Modal, Row, Col  } from 'antd';
-import { useIntl, FormattedMessage } from 'umi';
+import { useIntl, FormattedMessage } from '@umijs/max';
 import type { VdnScheduleType } from '../data';
 import moment from 'moment';
 

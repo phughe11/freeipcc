@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ProFormDigit, ProFormText, ProFormRadio, ProFormTextArea } from '@ant-design/pro-form';
 import { Form, Modal, Row, Col } from 'antd';
-import { useIntl, FormattedMessage } from 'umi';
+import { useIntl, FormattedMessage } from '@umijs/max';
 import type { PostType } from '../data.d';
 
 /* *

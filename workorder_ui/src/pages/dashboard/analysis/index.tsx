@@ -11,7 +11,7 @@ import SalesCard from './components/SalesCard';
 import TopSearch from './components/TopSearch';
 import ProportionSales from './components/ProportionSales';
 import OfflineData from './components/OfflineData';
-import { useRequest } from 'umi';
+import { useRequest } from '@umijs/max';
 
 import { fakeChartData } from './service';
 import PageLoading from './components/PageLoading';

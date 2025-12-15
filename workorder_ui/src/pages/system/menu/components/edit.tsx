@@ -7,7 +7,7 @@ import {
   ProFormTreeSelect,
 } from '@ant-design/pro-form';
 import { Form, Modal, Row, Col } from 'antd';
-import { useIntl, FormattedMessage, getLocale } from 'umi';
+import { useIntl, FormattedMessage, getLocale } from '@umijs/max';
 import type { DataNode } from 'antd/lib/tree';
 import type { MenuType } from '../data.d';
 import IconSelector from '@/components/IconSelector';

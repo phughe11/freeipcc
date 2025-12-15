@@ -11,6 +11,7 @@ import {
   TaobaoCircleOutlined,
   UserOutlined,
   WeiboCircleOutlined,
+  ReloadOutlined,
 } from '@ant-design/icons';
 import {
   LoginForm,
@@ -19,8 +20,8 @@ import {
   ProFormText,
 } from '@ant-design/pro-components';
 import { FormattedMessage, history, SelectLang, useIntl, useModel } from '@umijs/max';
-import { Alert, Col, message, Row, Tabs, Image } from 'antd';
-import React, { useState } from 'react';
+import { Alert, Col, message, Row, Tabs, Image, Spin } from 'antd';
+import React, { useState, useEffect, useCallback } from 'react';
 import { clearSessionToken, setSessionToken } from '@/access';
 import styles from './index.less';
 

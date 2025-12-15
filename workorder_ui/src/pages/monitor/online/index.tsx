@@ -1,7 +1,7 @@
 import type { FormInstance } from 'antd';
 import { Button, message, Modal } from 'antd';
 import React, { useRef, useEffect } from 'react';
-import { useIntl, FormattedMessage, useAccess } from 'umi';
+import { useIntl, FormattedMessage, useAccess } from '@umijs/max';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import type { OnlineUserType, OnlineUserListParams } from './data.d';

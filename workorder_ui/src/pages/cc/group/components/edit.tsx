@@ -6,7 +6,7 @@ import {
   ProFormCheckbox
 } from '@ant-design/pro-form';
 import { Form, Row, Col,Drawer,Button,Space,Divider  } from 'antd';
-import { useIntl, FormattedMessage } from 'umi';
+import { useIntl, FormattedMessage } from '@umijs/max';
 import type { GroupType } from '../data';
 
 export type PostFormValueType = Record<string, unknown> & Partial<GroupType>;

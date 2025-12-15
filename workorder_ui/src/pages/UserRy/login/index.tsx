@@ -9,7 +9,7 @@ import {
 import { Alert, Col, message, Row, Tabs, Image } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { ProFormCaptcha, ProFormCheckbox, ProFormText, LoginForm } from '@ant-design/pro-form';
-import { useIntl, history, FormattedMessage, SelectLang, useModel } from 'umi';
+import { useIntl, FormattedMessage, SelectLang, useModel, history } from '@umijs/max';
 import Footer from '@/components/Footer';
 import { getCaptchaImage, getFakeCaptcha, login } from '@/services/login';
 

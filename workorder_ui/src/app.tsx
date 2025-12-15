@@ -9,23 +9,21 @@ import defaultSettings from '../config/defaultSettings';
 import { errorConfig } from './requestErrorConfig';
 // third party
 import { store } from '@/store'
-import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { SnackbarProvider } from 'notistack'
 import ConfirmContextProvider from '@/store/context/ConfirmContextProvider'
 import { ReactFlowContext } from '@/store/context/ReactFlowContext'
 import { ThemeProvider } from '@mui/material/styles'
-import { CssBaseline, StyledEngineProvider } from '@mui/material'
+import { StyledEngineProvider } from '@mui/material'
 // defaultTheme
 import themes from '@/pages/gptchat/themes'
-import { useSelector } from 'react-redux'
 
-//import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { getUserInfo, getRoutersInfo } from '@/services/session';
 import AIcon from '@/components/AIcon';
 import React from "react";
-const isDev = process.env.NODE_ENV === 'development';
-const loginPath = '/user/login';
+import { AUTH_CONFIG, ENV } from '@/config/env.config';
+
+const { LOGIN_PATH, PUBLIC_PATHS } = AUTH_CONFIG;
 const chatPath = '/AiChat/user';
 
 /**
@@ -38,31 +36,28 @@ export async function getInitialState(): Promise<{
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
   const fetchUserInfo = async () => {
-    if (location.pathname === chatPath) {
-      history.push(chatPath);
+    // 检查是否是公开路径
+    const isPublicPath = PUBLIC_PATHS.some(path => location.pathname.startsWith(path));
+    if (isPublicPath) {
       return undefined;
     }
+    
     try {
-      /**const msg = await queryCurrentUser({
-        skipErrorHandler: true,
-      });
-      return msg.data;**/
       const resp = await getUserInfo();
-      console.log('fetchUserInfo')
-      console.log(resp)
-      if(resp === undefined || resp.code !== 200) {
-        history.push(loginPath);
-      } else {
-        return { ...resp.user, permissions: resp.permissions } as API.CurrentUser;
+      if (resp === undefined || resp.code !== 200) {
+        history.push(LOGIN_PATH);
+        return undefined;
       }
+      return { ...resp.user, permissions: resp.permissions } as API.CurrentUser;
     } catch (error) {
-      console.log('app error')
-      history.push(loginPath);
+      console.error('获取用户信息失败:', error);
+      history.push(LOGIN_PATH);
+      return undefined;
     }
-    return undefined;
   };
+  
   // 如果不是登录页面，执行
-  if (history.location.pathname !== loginPath) {
+  if (history.location.pathname !== LOGIN_PATH) {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -107,14 +102,15 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
 
     onPageChange: () => {
       const { location } = history;
+      // 检查是否是公开路径
+      const isPublicPath = PUBLIC_PATHS.some(path => location.pathname.startsWith(path));
       // 如果没有登录，重定向到 login
-      console.log("重定向到 login")
-      if (!initialState?.currentUser && location.pathname !== loginPath && location.pathname !== chatPath) {
-        history.push(loginPath);
+      if (!initialState?.currentUser && !isPublicPath) {
+        history.push(LOGIN_PATH);
       }
     },
 
-    links: isDev
+    links: ENV.isDev
       ? [
           <Link key="openapi" to="/umi/plugin/openapi" target="_blank">
             <LinkOutlined />
@@ -133,14 +129,17 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         if (!initialState?.currentUser?.userId) {
           return [];
         }
-        // initialState.currentUser 中包含了所有用户信息
-        const menus = await getRoutersInfo();
-        console.log('-------menu=%s',menus)
-        setInitialState((preInitialState) => ({
-          ...preInitialState,
-          menus,
-        }));
-        return menus;
+        try {
+          const menus = await getRoutersInfo();
+          setInitialState((preInitialState) => ({
+            ...preInitialState,
+            menus,
+          }));
+          return menus;
+        } catch (error) {
+          console.error('获取菜单失败:', error);
+          return [];
+        }
       },
     },
     /**menuDataRender: () =>{

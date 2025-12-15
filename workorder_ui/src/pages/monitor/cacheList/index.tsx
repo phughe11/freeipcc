@@ -4,7 +4,7 @@ import { Button, Card, Col, Form, Input, message, Row, Table } from 'antd';
 import styles from './index.less';
 import type { CacheNamesResponseType, CacheDataType } from './data';
 import WrapContent from '@/components/WrapContent';
-import { FormattedMessage } from 'umi';
+import { FormattedMessage } from '@umijs/max';
 import { ReloadOutlined } from '@ant-design/icons';
 
 const { TextArea } = Input;

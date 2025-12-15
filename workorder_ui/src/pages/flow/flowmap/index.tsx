@@ -11,7 +11,7 @@ import './flownode.css';
 import Toolbar from "@/pages/flow/flowmap/Toolbar";
 import Graph from './Graph';
 import Modal from "@/pages/flow/flowmap/components/Modal";
-import {useLocation} from "umi";
+import {useLocation} from "@umijs/max";
 
 export interface IProps{
   meta: { flowId: string,name: string }

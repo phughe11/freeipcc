@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { ProFormDigit, ProFormText, ProFormUploadButton } from '@ant-design/pro-form';
 import { Form, Modal, Row, Col } from 'antd';
-import { useIntl, FormattedMessage } from 'umi';
+import { useIntl, FormattedMessage } from '@umijs/max';
 import type { Playback } from '../data';
 
 export type PostFormValueType = Record<string, unknown> & Partial<Playback>;

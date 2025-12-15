@@ -1,5 +1,5 @@
 import { Button, Result } from 'antd';
-import { Link } from 'umi';
+import { Link } from '@umijs/max';
 import React from 'react';
 import type { RouteChildrenProps } from 'react-router';
 

@@ -1,5 +1,5 @@
 import { Card, Col, Row, Statistic } from 'antd';
-import { useRequest } from 'umi';
+import { useRequest } from '@umijs/max';
 import type { FC } from 'react';
 import { Gauge, WordCloud, Liquid, RingProgress } from '@ant-design/charts';
 import type { WordCloudData } from '@antv/g2plot/esm/plots/word-cloud/layer';

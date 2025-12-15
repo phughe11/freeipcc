@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {ProFormDigit, ProFormText, ProFormSelect, ProFormCheckbox} from '@ant-design/pro-form';
 import {Form, Modal, Row, Col, Divider} from 'antd';
-import { useIntl, FormattedMessage } from 'umi';
+import { useIntl, FormattedMessage } from '@umijs/max';
 import type { RouteCallType } from '../routeCallData';
 
 

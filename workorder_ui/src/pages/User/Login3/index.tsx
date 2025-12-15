@@ -1,7 +1,7 @@
 import {Alert, Button, Checkbox, Col, Divider, Image, message, Row, Spin, Tabs} from 'antd';
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { Link } from 'umi';
+import { Link } from '@umijs/max';
 import styles from './index.less';
 import { SelectLang } from '@@/plugin-locale/SelectLang';
 import { catchError, filter, mergeMap } from 'rxjs/operators';

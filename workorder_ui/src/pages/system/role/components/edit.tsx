@@ -6,7 +6,7 @@ import ProForm, {
   ProFormTextArea,
 } from '@ant-design/pro-form';
 import { Form, Modal, Row, Col, Tree } from 'antd';
-import { useIntl, FormattedMessage } from 'umi';
+import { useIntl, FormattedMessage } from '@umijs/max';
 import type { RoleType } from '../data.d';
 import type { DataNode } from 'antd/lib/tree';
 

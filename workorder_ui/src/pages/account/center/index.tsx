@@ -8,7 +8,7 @@ import {
 } from '@ant-design/icons';
 import { Card, Col, Divider, List, Row } from 'antd';
 import React, { useState } from 'react';
-import { useRequest } from 'umi';
+import { useRequest } from '@umijs/max';
 import type { tabKeyType } from './data.d';
 import { queryCurrentUserInfo } from './service';
 import styles from './Center.less';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, message } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import ProForm, { ProFormText } from '@ant-design/pro-form';
-import { useIntl } from 'umi';
+import { useIntl } from '@umijs/max';
 import { updateUserPwd } from '@/pages/system/user/service';
 
 const ResetPassword: React.FC = () => {

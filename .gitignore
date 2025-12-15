@@ -1,0 +1,102 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+*.log
+
+# UmiJS generated files
+.umi/
+.umi-production/
+.umi-test/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Package manager lock files (optional, uncomment if you want to ignore them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Java compiled files
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# NetBeans
+nb-configuration.xml
+nbactions.xml
+
+# VS Code
+.vscode/
+
+# Compiled files
+*.com
+*.exe
+*.o
+*.so
+*.dll
+
+# Backup files
+*~
+*.bak
+*.backup

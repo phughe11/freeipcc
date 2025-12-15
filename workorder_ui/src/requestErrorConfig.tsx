@@ -1,6 +1,6 @@
 ﻿import type { RequestConfig } from '@umijs/max';
-import { message, notification,Modal } from 'antd';
-import { history, Link } from 'umi';
+import { message, notification, Modal } from 'antd';
+import { history } from '@umijs/max';
 
 // 错误处理方案： 错误类型
 enum ErrorShowType {
@@ -41,8 +41,20 @@ export const errorConfig: RequestConfig = {
     // 错误接收及处理
     errorHandler: (error: any, opts: any) => {
       const { response } = error;
-      console.log("errorHandler="+response.status)
-      if (response.status === 401) {
+      
+      // 网络错误或无响应
+      if (!response) {
+        notification.error({
+          description: '网络异常，请检查网络连接',
+          message: '网络异常',
+        });
+        return;
+      }
+      
+      const { status } = response;
+      console.log('errorHandler status:', status);
+      
+      if (status === 401) {
         history.push('/user/login');
         return {};
       }
@@ -136,10 +148,13 @@ export const errorConfig: RequestConfig = {
 
   // 请求拦截器
   requestInterceptors: [
-    (config) => {
-      // 拦截请求配置，进行个性化处理。
-      const url = config.url.concat('?token = 123');
-      return { ...config, url };
+    (config: any) => {
+      // 添加认证 token
+      const accessToken = localStorage.getItem('access_token');
+      if (accessToken && config.headers) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+      return config;
     },
   ],
 

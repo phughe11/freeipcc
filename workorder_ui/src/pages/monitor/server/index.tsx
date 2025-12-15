@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getServerInfo } from './service';
 import { Card, Col, Row, Table } from 'antd';
 import styles from './style.less';
-import { FormattedMessage } from 'umi';
+import { FormattedMessage } from '@umijs/max';
 import type { CpuRowType, MemRowType, ServerInfoResponseType, DiskInfoType } from './data';
 import WrapContent from '@/components/WrapContent';
 

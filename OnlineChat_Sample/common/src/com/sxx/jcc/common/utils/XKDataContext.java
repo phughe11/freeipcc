@@ -694,11 +694,22 @@ public class XKDataContext {
 		WebIMPort = webIMPort;
 	}
 	/**
-	 * 系统级的加密密码 ， 从CA获取
-	 * @return
+	 * 系统级的加密密码，从环境变量获取
+	 * 安全修复: 密码不再硬编码
+	 * @return 系统加密密码
 	 */
 	public static String getSystemSecrityPassword(){
-		return "XKeFu" ;
+		String password = System.getenv("SYSTEM_ENCRYPTION_KEY");
+		if (password == null || password.isEmpty()) {
+			// 开发环境的默认值（生产环境必须配置环境变量）
+			String env = System.getenv("APP_ENV");
+			if ("development".equals(env) || "dev".equals(env)) {
+				return "XKeFu_Dev_Only";
+			}
+			throw new RuntimeException("SYSTEM_ENCRYPTION_KEY environment variable not set. " +
+				"Please set this variable in production environment.");
+		}
+		return password;
 	}
 	
 	public static void setIMServerStatus(boolean running){

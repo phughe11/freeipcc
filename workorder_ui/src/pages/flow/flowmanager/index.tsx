@@ -2,7 +2,7 @@ import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import type { FormInstance } from 'antd';
 import {Button, message, Modal} from 'antd';
 import React, { useState, useRef, useEffect } from 'react';
-import { useIntl, FormattedMessage, useAccess } from 'umi';
+import { useIntl, FormattedMessage, useAccess, history } from '@umijs/max';
 import { FooterToolbar } from '@ant-design/pro-layout';
 import WrapContent from '@/components/WrapContent';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
@@ -11,7 +11,6 @@ import type { IvrFlowType, IvrFlowListParams } from './data';
 import { getIvrFlowList, addIvrFlow, removeIvrFlow, updateIvrFlow } from './service';
 import UpdateForm from './components/edit';
 import {getDict} from "@/pages/system/dict/service";
-import { history } from 'umi'
 
 const handleAdd = async (fields: IvrFlowType) => {
   const hide = message.loading('正在添加');

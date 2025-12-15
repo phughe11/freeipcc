@@ -1,7 +1,7 @@
 import { defer, from } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import SystemConst from '@/utils/const';
-import { request } from 'umi';
+import { request } from '@umijs/max';
 
 const Service = {
   captchaConfig: () =>
